@@ -1,0 +1,597 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AquaNote — Deep Sea Scientific Dashboard 设计系统
+   主题：Obsidian 深海科研仪表盘
+   所有颜色均使用 HSL
+*/
+
+@layer base {
+  :root {
+    /* 深渊黑基调（深海暗色主题，始终使用暗色） */
+    --radius: 0.125rem; /* 2px 直角/极小圆角 */
+
+    --background: 216 28% 7%;         /* #0D1117 深渊黑 */
+    --foreground: 210 30% 91%;        /* #E6EDF3 冷白 */
+
+    --card: 216 22% 11%;              /* #161B22 暗礁灰 */
+    --card-foreground: 210 30% 91%;
+
+    --popover: 216 20% 10%;
+    --popover-foreground: 210 30% 91%;
+
+    --primary: 191 100% 50%;          /* #00E5FF 生物荧光青 */
+    --primary-foreground: 216 28% 7%;
+
+    --secondary: 216 18% 16%;
+    --secondary-foreground: 210 30% 91%;
+
+    --muted: 216 18% 14%;
+    --muted-foreground: 215 13% 55%;  /* #8B949E 辅助灰，≥4.5:1 */
+
+    --accent: 216 18% 16%;
+    --accent-foreground: 210 30% 91%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 30% 91%;
+
+    /* 珊瑚暖金 — 仅用于预警状态 */
+    --warning: 42 100% 50%;           /* #FFB300 */
+    --warning-foreground: 216 28% 7%;
+
+    /* 状态颜色 */
+    --success: 142 70% 45%;
+    --success-foreground: 216 28% 7%;
+    --error: 0 70% 50%;
+    --error-foreground: 210 30% 91%;
+    --info: 191 100% 50%;
+    --info-foreground: 216 28% 7%;
+
+    --border: 216 18% 18%;
+    --input: 216 18% 18%;
+    --ring: 191 100% 50%;
+
+    /* 图表颜色 */
+    --chart-1: 191 100% 50%;  /* 荧光青 */
+    --chart-2: 142 70% 45%;   /* 绿 */
+    --chart-3: 42 100% 50%;   /* 暖金 */
+    --chart-4: 260 60% 65%;   /* 紫 */
+    --chart-5: 0 70% 55%;     /* 红 */
+
+    /* 侧边栏 */
+    --sidebar-background: 216 25% 8%;
+    --sidebar-foreground: 210 25% 80%;
+    --sidebar-primary: 191 100% 50%;
+    --sidebar-primary-foreground: 216 28% 7%;
+    --sidebar-accent: 216 18% 14%;
+    --sidebar-accent-foreground: 210 30% 91%;
+    --sidebar-border: 216 18% 15%;
+    --sidebar-ring: 191 100% 50%;
+  }
+
+  /* 保持与 :root 相同（始终暗色主题） */
+  .dark {
+    --background: 216 28% 7%;
+    --foreground: 210 30% 91%;
+    --card: 216 22% 11%;
+    --card-foreground: 210 30% 91%;
+    --popover: 216 20% 10%;
+    --popover-foreground: 210 30% 91%;
+    --primary: 191 100% 50%;
+    --primary-foreground: 216 28% 7%;
+    --secondary: 216 18% 16%;
+    --secondary-foreground: 210 30% 91%;
+    --muted: 216 18% 14%;
+    --muted-foreground: 215 13% 55%;
+    --accent: 216 18% 16%;
+    --accent-foreground: 210 30% 91%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 210 30% 91%;
+    --warning: 42 100% 50%;
+    --warning-foreground: 216 28% 7%;
+    --success: 142 70% 45%;
+    --success-foreground: 216 28% 7%;
+    --border: 216 18% 18%;
+    --input: 216 18% 18%;
+    --ring: 191 100% 50%;
+    --chart-1: 191 100% 50%;
+    --chart-2: 142 70% 45%;
+    --chart-3: 42 100% 50%;
+    --chart-4: 260 60% 65%;
+    --chart-5: 0 70% 55%;
+    --sidebar-background: 216 25% 8%;
+    --sidebar-foreground: 210 25% 80%;
+    --sidebar-primary: 191 100% 50%;
+    --sidebar-primary-foreground: 216 28% 7%;
+    --sidebar-accent: 216 18% 14%;
+    --sidebar-accent-foreground: 210 30% 91%;
+    --sidebar-border: 216 18% 15%;
+    --sidebar-ring: 191 100% 50%;
+  }
+
+  /* 明亮主题 */
+  [data-theme="light"] {
+    --background: 0 0% 97%;
+    --foreground: 220 20% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 18%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 220 20% 18%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 13% 45%;
+    --accent: 210 20% 94%;
+    --accent-foreground: 220 20% 18%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 20% 18%;
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 199 89% 48%;
+    --chart-1: 199 89% 48%;
+    --chart-2: 142 60% 40%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 260 60% 55%;
+    --chart-5: 0 70% 55%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 15% 35%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 94%;
+    --sidebar-accent-foreground: 220 20% 18%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  /* 珊瑚礁主题 */
+  [data-theme="coral"] {
+    --background: 18 30% 8%;
+    --foreground: 30 30% 92%;
+    --card: 18 25% 11%;
+    --card-foreground: 30 30% 92%;
+    --popover: 18 20% 10%;
+    --popover-foreground: 30 30% 92%;
+    --primary: 18 100% 55%;
+    --primary-foreground: 18 30% 8%;
+    --secondary: 18 18% 16%;
+    --secondary-foreground: 30 30% 92%;
+    --muted: 18 18% 14%;
+    --muted-foreground: 20 13% 55%;
+    --accent: 18 18% 16%;
+    --accent-foreground: 30 30% 92%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 30 30% 92%;
+    --warning: 42 100% 50%;
+    --warning-foreground: 18 30% 8%;
+    --success: 142 60% 40%;
+    --success-foreground: 18 30% 8%;
+    --border: 18 18% 18%;
+    --input: 18 18% 18%;
+    --ring: 18 100% 55%;
+    --chart-1: 18 100% 55%;
+    --chart-2: 142 60% 40%;
+    --chart-3: 42 100% 50%;
+    --chart-4: 260 60% 65%;
+    --chart-5: 0 70% 55%;
+    --sidebar-background: 18 25% 8%;
+    --sidebar-foreground: 30 25% 80%;
+    --sidebar-primary: 18 100% 55%;
+    --sidebar-primary-foreground: 18 30% 8%;
+    --sidebar-accent: 18 18% 14%;
+    --sidebar-accent-foreground: 30 30% 92%;
+    --sidebar-border: 18 18% 15%;
+    --sidebar-ring: 18 100% 55%;
+  }
+
+  /* 午夜紫主题 */
+  [data-theme="midnight"] {
+    --background: 250 25% 7%;
+    --foreground: 250 20% 92%;
+    --card: 250 22% 11%;
+    --card-foreground: 250 20% 92%;
+    --popover: 250 20% 10%;
+    --popover-foreground: 250 20% 92%;
+    --primary: 260 80% 65%;
+    --primary-foreground: 250 25% 7%;
+    --secondary: 250 18% 16%;
+    --secondary-foreground: 250 20% 92%;
+    --muted: 250 18% 14%;
+    --muted-foreground: 250 13% 55%;
+    --accent: 250 18% 16%;
+    --accent-foreground: 250 20% 92%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 250 20% 92%;
+    --warning: 42 100% 50%;
+    --warning-foreground: 250 25% 7%;
+    --success: 142 60% 40%;
+    --success-foreground: 250 25% 7%;
+    --border: 250 18% 18%;
+    --input: 250 18% 18%;
+    --ring: 260 80% 65%;
+    --chart-1: 260 80% 65%;
+    --chart-2: 142 60% 40%;
+    --chart-3: 42 100% 50%;
+    --chart-4: 0 70% 55%;
+    --chart-5: 191 100% 50%;
+    --sidebar-background: 250 25% 8%;
+    --sidebar-foreground: 250 20% 80%;
+    --sidebar-primary: 260 80% 65%;
+    --sidebar-primary-foreground: 250 25% 7%;
+    --sidebar-accent: 250 18% 14%;
+    --sidebar-accent-foreground: 250 20% 92%;
+    --sidebar-border: 250 18% 15%;
+    --sidebar-ring: 260 80% 65%;
+  }
+}
+
+@layer base {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace, ui-sans-serif, system-ui;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  /* 统一 focus ring */
+  *:focus-visible {
+    outline: 1.5px solid hsl(var(--primary) / 0.7);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* 选中文字高亮 */
+  ::selection {
+    background: hsl(191 100% 50% / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  /* Button 通用过渡 */
+  button {
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+  }
+}
+
+/* 渐变文字工具类 */
+@layer utilities {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(191 100% 50%), hsl(191 80% 70%));
+  }
+
+  .gradient-text-warm {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(42 100% 50%), hsl(42 80% 70%));
+  }
+
+  /* 深海发光边框 */
+  .glow-border {
+    box-shadow: 0 0 0 1px hsl(191 100% 50% / 0.4), 0 0 12px hsl(191 100% 50% / 0.15);
+  }
+
+  .glow-border-warning {
+    box-shadow: 0 0 0 1px hsl(42 100% 50% / 0.4), 0 0 12px hsl(42 100% 50% / 0.15);
+  }
+
+  /* 水母呼吸动画（空状态） */
+  .jellyfish-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.04); }
+  }
+
+  /* 深海粒子漂浮 */
+  .float-particle {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.2; }
+    33% { transform: translateY(-12px) translateX(6px); opacity: 0.5; }
+    66% { transform: translateY(-6px) translateX(-4px); opacity: 0.3; }
+  }
+
+  /* 侧边栏过渡 */
+  .sidebar-transition {
+    transition: width 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+
+  /* 预警脉冲 */
+  .warning-pulse {
+    animation: warningPulse 0.3s ease-out;
+  }
+
+  @keyframes warningPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  /* 标签页切换动画 */
+  .tab-content-enter {
+    animation: tabEnter 150ms ease-out;
+  }
+
+  @keyframes tabEnter {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 标签页滑入（从右侧进入） */
+  .tab-slide-from-right {
+    animation: tabSlideFromRight 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes tabSlideFromRight {
+    from { opacity: 0; transform: translateX(18px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* 标签页滑入（从左侧进入） */
+  .tab-slide-from-left {
+    animation: tabSlideFromLeft 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes tabSlideFromLeft {
+    from { opacity: 0; transform: translateX(-18px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* 光线扫动 — opacity 控制可见性，transform 由 inline style 设置旋转角度，不在此覆盖 */
+  .light-ray-beam {
+    animation-name: lightRayFade;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    opacity: 0;
+  }
+
+  @keyframes lightRayFade {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    75%  { opacity: 0.8; }
+    100% { opacity: 0; }
+  }
+
+  /* 涟漪扩散 — animation-duration 由 inline style 注入 */
+  .ripple-ring {
+    animation-name: rippleExpand;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    opacity: 0;
+  }
+
+  @keyframes rippleExpand {
+    0%   { transform: scale(0.08); opacity: 0; }
+    8%   { opacity: 0.9; }
+    75%  { opacity: 0.15; }
+    100% { transform: scale(2.4); opacity: 0; }
+  }
+
+  /* ── 减少动效 ── */
+  /* 当 data-reduce-motion="1" 时，禁用所有自定义动画 */
+  [data-reduce-motion="1"] .float-particle,
+  [data-reduce-motion="1"] .light-ray-beam,
+  [data-reduce-motion="1"] .ripple-ring,
+  [data-reduce-motion="1"] .page-enter,
+  [data-reduce-motion="1"] .tab-content-enter,
+  [data-reduce-motion="1"] .tab-slide-from-right,
+  [data-reduce-motion="1"] .tab-slide-from-left {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* 系统级媒体查询同步 */
+  @media (prefers-reduced-motion: reduce) {
+    .float-particle,
+    .light-ray-beam,
+    .ripple-ring {
+      animation: none !important;
+      opacity: 0.4;
+    }
+    .page-enter,
+    .tab-content-enter,
+    .tab-slide-from-right,
+    .tab-slide-from-left {
+      animation: none !important;
+    }
+  }
+
+  /* 命令面板 */
+  .command-panel-overlay {
+    backdrop-filter: blur(4px);
+    background: hsl(216 28% 7% / 0.8);
+  }
+
+  /* 联网状态脉冲 */
+  .online-pulse {
+    animation: onlinePulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes onlinePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* AI 消息淡入 */
+  .ai-msg-enter {
+    animation: aiMsgEnter 200ms ease-out;
+  }
+
+  @keyframes aiMsgEnter {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 页面入场 */
+  .page-enter {
+    animation: pageEnter 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes pageEnter {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 卡片悬停浮起 */
+  .card-hover {
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px hsl(191 100% 50% / 0.07);
+  }
+
+  /* 渐变边框 */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(191 100% 50% / 0.4), hsl(191 100% 50% / 0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* 数字计数器弹入 */
+  .count-pop {
+    animation: countPop 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes countPop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* 骨架屏波动 */
+  .skeleton-wave {
+    background: linear-gradient(
+      90deg,
+      hsl(216 18% 14%) 25%,
+      hsl(216 18% 17%) 50%,
+      hsl(216 18% 14%) 75%
+    );
+    background-size: 200% 100%;
+    animation: skeletonWave 1.8s ease-in-out infinite;
+  }
+
+  @keyframes skeletonWave {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* 模块图标发光 */
+  .icon-glow {
+    filter: drop-shadow(0 0 6px hsl(191 100% 50% / 0.5));
+  }
+
+  /* 按钮涟漪 */
+  .btn-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-ripple::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, hsl(191 100% 50% / 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  .btn-ripple:active::after {
+    opacity: 1;
+  }
+
+  /* Dialog 入场 */
+  @keyframes dialogEnter {
+    from { opacity: 0; transform: scale(0.96) translateY(8px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* 侧边栏图标脉冲（激活） */
+  @keyframes activePulse {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(191 100% 50% / 0.25); }
+    50% { box-shadow: 0 0 0 3px hsl(191 100% 50% / 0); }
+  }
+
+  /* 错误震动 */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    15%       { transform: translateX(-6px); }
+    30%       { transform: translateX(6px); }
+    45%       { transform: translateX(-5px); }
+    60%       { transform: translateX(5px); }
+    75%       { transform: translateX(-3px); }
+    90%       { transform: translateX(3px); }
+  }
+  .animate-shake {
+    animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+}
+
+/* 字体大小覆盖（通过 data-font-size 属性控制） */
+[data-font-size="small"] { font-size: 13px; }
+[data-font-size="medium"] { font-size: 15px; }
+[data-font-size="large"] { font-size: 17px; }
+
+/* ─── 全局水波纹点击效果 ─────────────────────────────── */
+.ripple-effect {
+  position: fixed;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(191 100% 50% / 0.25) 0%, transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleExpand 0.6s ease-out forwards;
+  z-index: 9999;
+}
+@keyframes rippleExpand {
+  to {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
