@@ -4,7 +4,7 @@
   "description": "AquaNote - 水族养护科研级软件",
   "author": "ChenXiaobai",
   "type": "module",
-  "main": "main.js",
+  "main": "main.cjs",
   "scripts": {
     "build:win": "electron-builder --win",
     "dev": "echo 'Do not use this command, only use lint to check'",
@@ -80,7 +80,6 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.5",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tauri-apps/cli": "^1.6.3",
     "@types/bmapgl": "^0.0.7",
     "@types/lodash": "^4.17.24",
     "@types/react": "^19.2.2",
@@ -101,13 +100,12 @@
     "appId": "com.chenxiaobai.aquanote",
     "productName": "AquaNote",
     "directories": {
-      "output": "dist-electron",
-      "buildResources": "build"
+      "output": "dist-electron"
     },
     "files": [
+      "main.cjs",
+      "preload.cjs",
       "dist/**/*",
-      "main.js",
-      "preload.js",
       "public/**/*"
     ],
     "win": {
