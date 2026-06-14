@@ -4,7 +4,7 @@
   "description": "AquaNote - 水族养护科研级软件",
   "author": "ChenXiaobai",
   "type": "module",
-  "main": "dist-electron/main.js",
+  "main": "main.js",
   "scripts": {
     "build:win": "electron-builder --win",
     "dev": "echo 'Do not use this command, only use lint to check'",
@@ -69,7 +69,7 @@
     "react-router-dom": "^7.9.5",
     "recharts": "2.15.4",
     "sonner": "^2.0.7",
-    "streamdown": "^1.4.0",
+    "streamdown": "^3.4.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-intersect": "^2.2.0",
@@ -106,15 +106,12 @@
     },
     "files": [
       "dist/**/*",
-      "dist-electron/**/*"
+      "main.js",
+      "preload.js",
+      "public/**/*"
     ],
     "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": ["x64"]
-        }
-      ],
+      "target": "nsis",
       "icon": "build/icon.ico"
     },
     "nsis": {
